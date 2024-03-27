@@ -367,6 +367,8 @@ static const struct of_device_id crypto_of_id_table[] = {
 		.data = (void *)&rk3288_soc_data
 	},
 #endif
+	
+	{ /* sentinel */ }
 };
 
 MODULE_DEVICE_TABLE(of, crypto_of_id_table);

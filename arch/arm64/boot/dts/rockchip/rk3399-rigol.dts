@@ -5,7 +5,7 @@
 	interrupt-parent = <0x1>;
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	model = "Rigol RK3399 Board (Android)";
+	model = "Rigol RK3399 hacked with OrangeRigol";
 
 	ddr_timing {
 		compatible = "rockchip,ddr-timing";
@@ -291,7 +291,7 @@
 		resets = <0x8 0x89>;
 		reset-names = "stmmaceth";
 		power-domains = <0x16 0x16>;
-		status = "okay";
+		status = "disabled";
 		phy-supply = <0x17>;
 		phy-mode = "rmii";
 		clock_in_out = "input";
@@ -874,7 +874,7 @@
 		};
 
 		goodix_ts@14 {
-			status = "disable";
+			status = "okay";
 			compatible = "goodix,gt9xx";
 			reg = <0x14>;
 			interrupt-parent = <0x18>;
@@ -1620,7 +1620,7 @@
 		};
 
 		ilitek@41 {
-			status = "disabled";
+			status = "okay";
 			compatible = "tchip,ilitek";
 			reg = <0x41>;
 			reset-gpio = <0x3a 0x5 0x0>;
@@ -4017,33 +4017,6 @@
 		compatible = "rockchip,uboot-charge";
 		rockchip,uboot-charge-on = <0x1>;
 		rockchip,android-charge-on = <0x0>;
-	};
-
-	firmware {
-
-		android {
-			compatible = "android,firmware";
-
-			fstab {
-				compatible = "android,fstab";
-
-				system {
-					compatible = "android,system";
-					dev = "/dev/block/platform/fe330000.sdhci/by-name/system";
-					type = "ext4";
-					mnt_flags = "ro,barrier=1,inode_readahead_blks=8";
-					fsmgr_flags = "wait,verify";
-				};
-
-				vendor {
-					compatible = "android,vendor";
-					dev = "/dev/block/platform/fe330000.sdhci/by-name/vendor";
-					type = "ext4";
-					mnt_flags = "ro,barrier=1,inode_readahead_blks=8";
-					fsmgr_flags = "wait,verify";
-				};
-			};
-		};
 	};
 
 	board {

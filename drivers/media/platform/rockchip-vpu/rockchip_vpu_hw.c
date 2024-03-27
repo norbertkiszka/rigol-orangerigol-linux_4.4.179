@@ -410,7 +410,7 @@ void rockchip_vpu_vp8e_assemble_bitstream(struct rockchip_vpu_ctx *ctx,
 	if (WARN_ON(dst_buf->vp8e.dct_offset + dct_size > dst_size))
 		return;
 
-	vpu_debug(1, "%s: hdr_size = %d, ext_hdr_size = %d, dct_size = %d\n",
+	vpu_debug(1, "%s: hdr_size = %zu, ext_hdr_size = %zu, dct_size = %zu\n",
 			__func__, hdr_size, ext_hdr_size, dct_size);
 
 	memmove(dst + hdr_size + ext_hdr_size,
@@ -452,7 +452,7 @@ void rockchip_vpu_h264e_assemble_bitstream(struct rockchip_vpu_ctx *ctx,
 	if (WARN_ON(sps_size + pps_size + slices_size > dst_size))
 		return;
 
-	vpu_debug(1, "%s: sps_size = %u, pps_size = %u, slices_size = %u\n",
+	vpu_debug(1, "%s: sps_size = %zu, pps_size = %zu, slices_size = %zu\n",
 		__func__, sps_size, pps_size, slices_size);
 
 	memcpy(dst, sps->buffer, sps_size);
