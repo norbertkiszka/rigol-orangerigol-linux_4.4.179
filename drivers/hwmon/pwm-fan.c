@@ -47,8 +47,8 @@ static int  __set_pwm(struct pwm_fan_ctx *ctx, unsigned long pwm)
 	if (ctx->pwm_value == pwm)
 		goto exit_set_pwm_err;
 
-	duty = DIV_ROUND_UP(pwm * (ctx->pwm->period - 1), MAX_PWM);
-	ret = pwm_config(ctx->pwm, duty, ctx->pwm->period);
+	duty = DIV_ROUND_UP(pwm * (ctx->pwm->args.period - 1), MAX_PWM);
+	ret = pwm_config(ctx->pwm, duty, ctx->pwm->args.period);
 	if (ret)
 		goto exit_set_pwm_err;
 
@@ -233,11 +233,12 @@ static int pwm_fan_probe(struct platform_device *pdev)
 
 	platform_set_drvdata(pdev, ctx);
 
-	/* Set duty cycle to maximum allowed */
-	duty_cycle = ctx->pwm->period - 1;
+	/* Set duty cycle to maximum allowed and enable PWM output */
+	duty_cycle = ctx->pwm->args.period - 1;
 	ctx->pwm_value = MAX_PWM;
+	ctx->pwm->state.enabled = true;
 
-	ret = pwm_config(ctx->pwm, duty_cycle, ctx->pwm->period);
+	ret = pwm_config(ctx->pwm, duty_cycle, ctx->pwm->args.period);
 	if (ret) {
 		dev_err(&pdev->dev, "Failed to configure PWM\n");
 		return ret;
@@ -309,8 +310,8 @@ static int pwm_fan_resume(struct device *dev)
 	if (ctx->pwm_value == 0)
 		return 0;
 
-	duty = DIV_ROUND_UP(ctx->pwm_value * (ctx->pwm->period - 1), MAX_PWM);
-	ret = pwm_config(ctx->pwm, duty, ctx->pwm->period);
+	duty = DIV_ROUND_UP(ctx->pwm_value * (ctx->pwm->args.period - 1), MAX_PWM);
+	ret = pwm_config(ctx->pwm, duty, ctx->pwm->args.period);
 	if (ret)
 		return ret;
 	return pwm_enable(ctx->pwm);
