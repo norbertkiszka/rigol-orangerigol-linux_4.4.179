@@ -4172,7 +4172,7 @@ static int init_lcdc_device_driver(struct rk_fb *rk_fb,
 }
 
 #ifdef CONFIG_LOGO_LINUX_BMP
-static struct linux_logo *bmp_logo;
+const struct linux_logo *bmp_logo;
 static int fb_prewine_bmp_logo(struct fb_info *info, int rotate)
 {
 	bmp_logo = fb_find_logo(24);
@@ -4185,7 +4185,7 @@ static int fb_prewine_bmp_logo(struct fb_info *info, int rotate)
 
 static void fb_show_bmp_logo(struct fb_info *info, int rotate)
 {
-	unsigned char *src = bmp_logo->data;
+	const unsigned char *src = bmp_logo->data;
 	unsigned char *dst = info->screen_base;
 	int i;
 	unsigned int needwidth = (*(src - 24) << 8) | (*(src - 23));

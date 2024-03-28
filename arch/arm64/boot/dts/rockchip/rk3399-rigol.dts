@@ -1762,7 +1762,7 @@
 		vop-pn-msch-readlatency = <0x0 0x0 0x4 0x20>;
 		auto-min-freq = <0x61a80>;
 		auto-freq-en = <0x1>;
-		status = "disabled";
+		status = "okay";
 		operating-points-v2 = <0x8d>;
 		center-supply = <0x8e>;
 		vop-dclk-mode = <0x1>;
@@ -2656,15 +2656,11 @@
 		clock-names = "hdmi-tmds-pll", "default-vop-pll";
 		devfreq = <0xa7>;
 		status = "okay";
-		logo-memory-region = <0xb8>;
-		secure-memory-region = <0xb9>;
 
 		route {
 
 			route-hdmi {
 				status = "okay";
-				logo,uboot = "logo_kernel.bmp";
-				logo,kernel = "logo_kernel.bmp";
 				logo,mode = "center";
 				charge_logo,mode = "center";
 				connect = <0xab>;
@@ -2672,8 +2668,6 @@
 
 			route-dsi {
 				status = "okay";
-				logo,uboot = "logo.bmp";
-				logo,kernel = "logo.bmp";
 				logo,mode = "center";
 				charge_logo,mode = "center";
 				connect = <0xae>;
@@ -2681,8 +2675,6 @@
 
 			route-dsi1 {
 				status = "disabled";
-				logo,uboot = "logo.bmp";
-				logo,kernel = "logo_kernel.bmp";
 				logo,mode = "center";
 				charge_logo,mode = "center";
 				connect = <0xb1>;
@@ -2690,8 +2682,6 @@
 
 			route-edp {
 				status = "disabled";
-				logo,uboot = "logo.bmp";
-				logo,kernel = "logo_kernel.bmp";
 				logo,mode = "center";
 				charge_logo,mode = "center";
 				connect = <0xb3>;
@@ -3881,30 +3871,6 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <0x43>;
 		interrupts = <0x0 0x96 0x4 0x0>;
-	};
-
-	reserved-memory {
-		#address-cells = <0x2>;
-		#size-cells = <0x2>;
-		ranges;
-
-		drm-logo@00000000 {
-			compatible = "rockchip,drm-logo";
-			reg = <0x0 0x0 0x0 0x0>;
-			phandle = <0xb8>;
-		};
-
-		secure-memory@20000000 {
-			compatible = "rockchip,secure-memory";
-			reg = <0x0 0x20000000 0x0 0x10000000>;
-			status = "disabled";
-			phandle = <0xb9>;
-		};
-
-		stb-devinfo@00000000 {
-			compatible = "rockchip,stb-devinfo";
-			reg = <0x0 0x0 0x0 0x0>;
-		};
 	};
 
 	rockchip-key {

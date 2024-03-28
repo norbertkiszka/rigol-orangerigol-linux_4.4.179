@@ -489,10 +489,10 @@ CONFIG_ARM64_MODULE_CMODEL_LARGE=y
 #
 # Boot options
 #
-CONFIG_CMDLINE="earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1 coherent_pool=1m cma=257M  earlyprintk console=ttyFIQ0,115200n8 androidboot.hardware=rk30board androidboot.console=ttyFIQ0 rw root=/dev/mmcblk0p4 rootwait rootfstype=ext4init=/sbin/init"
-CONFIG_CMDLINE_FROM_BOOTLOADER=y
+CONFIG_CMDLINE="root=PARTUUID=614e0000-0000 rootfstype=ext4 ro earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1 coherent_pool=1m cma=257M framebuffer_depth=16 systemd.unified_cgroup_hierarchy=0 quiet loglevel=2 systemd.show_status=false rd.udev.log_level=2"
+# CONFIG_CMDLINE_FROM_BOOTLOADER is not set
 # CONFIG_CMDLINE_EXTEND is not set
-# CONFIG_CMDLINE_FORCE is not set
+CONFIG_CMDLINE_FORCE=y
 CONFIG_EFI_STUB=y
 CONFIG_EFI=y
 CONFIG_DMI=y
@@ -1570,7 +1570,7 @@ CONFIG_DWMAC_GENERIC=y
 # CONFIG_DWMAC_IPQ806X is not set
 # CONFIG_DWMAC_LPC18XX is not set
 # CONFIG_DWMAC_MESON is not set
-CONFIG_DWMAC_ROCKCHIP=y
+CONFIG_DWMAC_ROCKCHIP=m
 # CONFIG_DWMAC_SOCFPGA is not set
 # CONFIG_DWMAC_STI is not set
 # CONFIG_DWMAC_SUNXI is not set
@@ -3440,8 +3440,8 @@ CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY=y
 # CONFIG_FRAMEBUFFER_CONSOLE_ROTATION is not set
 CONFIG_LOGO=y
 CONFIG_LOGO_LINUX_CLUT224=y
-CONFIG_LOGO_LINUX_MONO=y
-CONFIG_LOGO_LINUX_VGA16=y
+# CONFIG_LOGO_LINUX_MONO is not set
+# CONFIG_LOGO_LINUX_VGA16 is not set
 CONFIG_SOUND=y
 # CONFIG_SOUND_OSS_CORE is not set
 CONFIG_SND=y
@@ -4981,7 +4981,7 @@ CONFIG_INOTIFY_USER=y
 # CONFIG_FANOTIFY is not set
 # CONFIG_QUOTA is not set
 # CONFIG_QUOTACTL is not set
-# CONFIG_AUTOFS4_FS is not set
+CONFIG_AUTOFS4_FS=m
 CONFIG_FUSE_FS=y
 # CONFIG_CUSE is not set
 # CONFIG_OVERLAY_FS is not set
@@ -5154,7 +5154,7 @@ CONFIG_NLS_UTF8=y
 #
 CONFIG_PRINTK_TIME=y
 # CONFIG_PRINTK_PROCESS is not set
-CONFIG_MESSAGE_LOGLEVEL_DEFAULT=4
+CONFIG_MESSAGE_LOGLEVEL_DEFAULT=3
 # CONFIG_BOOT_PRINTK_DELAY is not set
 CONFIG_DYNAMIC_DEBUG=y
 

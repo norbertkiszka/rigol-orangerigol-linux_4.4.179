@@ -581,6 +581,8 @@ static void fbcon_prepare_logo(struct vc_data *vc, struct fb_info *info,
 		erase &= ~0x400;
 	logo_height = fb_prepare_logo(info, ops->rotate);
 	logo_lines = DIV_ROUND_UP(logo_height, vc->vc_font.height);
+	if(logo_lines > vc->vc_bottom)
+		logo_lines = vc->vc_bottom;
 	q = (unsigned short *) (vc->vc_origin +
 				vc->vc_size_row * rows);
 	step = logo_lines * cols;
@@ -634,10 +636,14 @@ static void fbcon_prepare_logo(struct vc_data *vc, struct fb_info *info,
 		kfree(save);
 	}
 
+	/*if (logo_lines -1 == vc->vc_bottom) {
+		logo_lines -= 1;
+	}*/
+	
 	if (logo_lines > vc->vc_bottom) {
 		logo_shown = FBCON_LOGO_CANSHOW;
 		printk(KERN_INFO
-		       "fbcon_init: disable boot-logo (boot-logo bigger than screen).\n");
+		       "fbcon_init: disable boot-logo (boot-logo bigger than screen). %d > %d\n", logo_lines, vc->vc_bottom);
 	} else if (logo_shown != FBCON_LOGO_DONTSHOW) {
 		logo_shown = FBCON_LOGO_DRAW;
 		vc->vc_top = logo_lines;
