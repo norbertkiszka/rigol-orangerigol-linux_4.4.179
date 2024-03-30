@@ -1762,7 +1762,7 @@
 		vop-pn-msch-readlatency = <0x0 0x0 0x4 0x20>;
 		auto-min-freq = <0x61a80>;
 		auto-freq-en = <0x1>;
-		status = "okay";
+		status = "disabled";
 		operating-points-v2 = <0x8d>;
 		center-supply = <0x8e>;
 		vop-dclk-mode = <0x1>;
