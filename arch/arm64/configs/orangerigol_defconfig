@@ -489,7 +489,7 @@ CONFIG_ARM64_MODULE_CMODEL_LARGE=y
 #
 # Boot options
 #
-CONFIG_CMDLINE="root=PARTUUID=614e0000-0000 rootfstype=ext4 ro earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1 coherent_pool=1m cma=257M framebuffer_depth=16 systemd.unified_cgroup_hierarchy=0 quiet loglevel=2 systemd.show_status=false rd.udev.log_level=2"
+CONFIG_CMDLINE="root=PARTUUID=614e0000-0000 rootfstype=ext4 ro earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1 coherent_pool=1m cma=257M framebuffer_depth=16 systemd.unified_cgroup_hierarchy=0 quiet splash loglevel=2 systemd.show_status=0 rd.udev.log_level=2 fsck.repair=yes"
 # CONFIG_CMDLINE_FROM_BOOTLOADER is not set
 # CONFIG_CMDLINE_EXTEND is not set
 CONFIG_CMDLINE_FORCE=y
