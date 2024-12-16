@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: GPL-2.0
+
+if ARCH_ROCKCHIP
+
+menuconfig RIGOL
+	tristate "Rigol modules"
+	default m
+	depends on MODULES
+	depends on GPIOLIB
+	depends on m
+	help
+	  Modules for a Rigol devices
+
+endif # ARCH_ROCKCHIP
