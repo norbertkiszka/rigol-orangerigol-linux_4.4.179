@@ -37,7 +37,7 @@ static long spi_pll_ioctl(struct file *file, unsigned int cmd, unsigned long arg
 
 static void inline _spi_pll_set_gpio_high(unsigned int gpio)
 {
-	gpiod_set_raw_value(gpio_to_desc(gpio), 2);
+	gpiod_set_raw_value(gpio_to_desc(gpio), 2); // In a Rigol modules somehow it seams it's 2, not 1 - probably a typo.
 }
 
 static void inline _spi_pll_set_gpio_low(unsigned int gpio)
@@ -70,6 +70,7 @@ static ssize_t spi_pll_write(struct file *file, const char __user *buf, size_t c
 	_spi_pll_set_gpio_low(u32LE);
 	udelay(1);
 	
+	// Extract every bite from buffer and send it as SPI communication.
 	for (i = 0; i < (unsigned short)count; i++)
 	{
 		bit = 7;
@@ -99,7 +100,7 @@ static ssize_t spi_pll_write(struct file *file, const char __user *buf, size_t c
 	udelay(1);
 	_spi_pll_set_gpio_low(u32LE);
 	
-	ret = 0; // same as in decompiled original spi2pll_lxm2582_gpio from Rigol...
+	ret = 0; // Same as in decompiled original spi2pll_lxm2582_gpio from Rigol...
 	
 out:
 	udelay(1);
@@ -137,13 +138,13 @@ static int _spi_pll_set_gpio_direction(unsigned int gpio, char *label/*, int dir
 		}
 		else
 		{
-			printk("xxxxx request gpio:%u failed!\n",gpio);
+			printk(KERN_ERR "xxxxx request gpio:%u failed!\n",gpio);
 			gpio_free(gpio);
 		}
 	}
 	else
 	{
-		ret = 0; // same as in decompiled original spi2pll_lxm2582_gpio from Rigol...
+		ret = 0; // Same as in decompiled original spi2pll_lxm2582_gpio from Rigol...
 	}
 	return ret;
 }
@@ -184,7 +185,7 @@ static int __init spi_pll_init(void)
 	_spi_pll_set_gpio_direction(u32SCLK, "spi_sclk");
 	_spi_pll_set_gpio_direction(u32SDIO, "spi_sdio");
 	
-	printk("xxxxx SPI driver initialize successful!\n"); // same as in Rigol decompiled module...
+	printk(KERN_INFO "xxxxx SPI driver initialize successful!\n"); // same as in Rigol decompiled module...
 	return 0;
 
 r_device:
