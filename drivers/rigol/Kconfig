@@ -3,13 +3,15 @@
 if ARCH_ROCKCHIP
 
 menuconfig RIGOL
-	tristate "Rigol modules"
+	tristate "Device drivers for Rigol DHO800 and DHO900 series"
 	default m
 	depends on MODULES
 	depends on GPIOLIB
 	depends on I2C
 	depends on m
 	help
-	  Modules for a Rigol devices
+	  Modules for a Rigol oscilloscopes made from scratch based on reverse engineering.
+	  
+	  With exception of Focaltech Touchscreen driver, which was borrowed from Rockchip kernel 5.10.
 
 endif # ARCH_ROCKCHIP

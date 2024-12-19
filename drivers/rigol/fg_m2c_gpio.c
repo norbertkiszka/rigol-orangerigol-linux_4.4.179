@@ -11,6 +11,8 @@ MODULE_AUTHOR("Norbert Kiszka");
 MODULE_DESCRIPTION("fg_m2_dev");
 MODULE_LICENSE("GPL");
 
+#define AFG_POWER_GPIO 0x95
+
 static dev_t dev = 0;
 static int dev_major_number = 0;
 static struct class *fg_m2c_class = NULL;
@@ -104,9 +106,9 @@ static int __init fg_m2c_gpio_init(void)
 		goto r_device;
 	}
 	
-	if(gpio_request(0x95,"FG_M2C_GPIO") == 0)
+	if(gpio_request(AFG_POWER_GPIO,"FG_M2C_GPIO") == 0)
 	{
-		desc = gpio_to_desc(0x95);
+		desc = gpio_to_desc(AFG_POWER_GPIO);
 		gpiod_direction_output_raw(desc, 0);
 		printk("fg_m2c_gpio config ok\n");
 		printk(" fg_m2c_gpio_dev register successfully\n");
@@ -114,8 +116,8 @@ static int __init fg_m2c_gpio_init(void)
 	}
 	else
 	{
-		printk(KERN_ERR "gpio %d  FG_M2C_GPIO request failed!\n", 0x95);
-		gpio_free(0x95);
+		printk(KERN_ERR "gpio %d  FG_M2C_GPIO request failed!\n", AFG_POWER_GPIO);
+		gpio_free(AFG_POWER_GPIO);
 		printk(KERN_ERR "fg_m2c_gpio config gpio failed!\n");
     }
 
@@ -130,7 +132,9 @@ static void __exit fg_m2c_gpio_exit(void)
 {
 	printk(KERN_WARNING "fg_m2c_gpio removed");
 	
-	gpio_free(0x95);
+	desc = gpio_to_desc(AFG_POWER_GPIO);
+	gpiod_direction_output_raw(desc, 0);
+	gpio_free(AFG_POWER_GPIO);
 	
 	device_destroy(fg_m2c_class, MKDEV(dev_major_number, 0));
 
