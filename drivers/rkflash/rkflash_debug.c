@@ -114,3 +114,4 @@ static struct kernel_param_ops rkflash_debug_param_ops = {
 
 module_param_cb(rkflash_debug, &rkflash_debug_param_ops, &rkflash_debug, 0644);
 MODULE_PARM_DESC(rkflash_debug, "config rkflash_debug module");
+MODULE_LICENSE("GPL");

@@ -210,4 +210,6 @@ static int __init rksfc_driver_init(void)
 
 module_init(rksfc_driver_init);
 module_exit(rksfc_driver_exit);
-MODULE_ALIAS(DRIVER_NAME);
+//MODULE_ALIAS(DRIVER_NAME);
+MODULE_ALIAS("rksfc");
+MODULE_LICENSE("GPL");

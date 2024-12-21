@@ -3065,6 +3065,8 @@ int __weak pci_remap_iospace(const struct resource *res, phys_addr_t phys_addr)
 #endif
 }
 
+EXPORT_SYMBOL(pci_remap_iospace);
+
 /**
  *	pci_unmap_iospace - Unmap the memory mapped I/O space
  *	@res: resource to be unmapped
