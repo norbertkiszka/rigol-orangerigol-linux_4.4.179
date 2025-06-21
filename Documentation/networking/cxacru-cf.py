@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Copyright 2009 Simon Arlott
 #
 # This program is free software; you can redistribute it and/or modify it
@@ -46,3 +46,4 @@ while True:
 	i += 1
 
 sys.stdout.write("\n")
+

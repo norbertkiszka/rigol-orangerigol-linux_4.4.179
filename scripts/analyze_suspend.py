@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Tool for analyzing suspend/resume timing
 # Copyright (c) 2013, Intel Corporation.
@@ -3589,3 +3589,4 @@ if __name__ == '__main__':
 	else:
 		# run the test in the current directory
 		runTest(".")
+

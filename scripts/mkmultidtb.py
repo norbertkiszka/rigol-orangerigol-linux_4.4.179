@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 # Copyright (c) 2018 Fuzhou Rockchip Electronics Co., Ltd
 #
@@ -53,3 +53,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

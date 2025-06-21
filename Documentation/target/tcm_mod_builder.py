@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # The TCM v4 multi-protocol fabric module generation script for drivers/target/$NEW_MOD
 #
 # Copyright (c) 2010 Rising Tide Systems
@@ -678,3 +678,4 @@ for m in mandatories:
 if __name__ == "__main__":
 
 	main(str(opts.modname), opts.protoident)
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/python3
 
 """Find Kconfig symbols that are referenced but not defined."""
 
@@ -326,3 +326,4 @@ def parse_kconfig_file(kfile, defined_features, referenced_features):
 
 if __name__ == "__main__":
     main()
+

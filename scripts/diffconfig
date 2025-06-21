@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # diffconfig - a tool to compare .config files.
 #
@@ -129,3 +129,4 @@ def main():
         print_config("+", config, None, b[config])
 
 main()
+

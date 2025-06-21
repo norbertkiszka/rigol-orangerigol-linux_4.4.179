@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # call-graph-from-postgresql.py: create call-graph from postgresql database
 # Copyright (c) 2014, Intel Corporation.
 #
@@ -325,3 +325,4 @@ if __name__ == '__main__':
 	err = app.exec_()
 	db.close()
 	sys.exit(err)
+

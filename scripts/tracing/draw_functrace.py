@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
 Copyright 2008 (c) Frederic Weisbecker <fweisbec@gmail.com>
@@ -127,3 +127,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
+

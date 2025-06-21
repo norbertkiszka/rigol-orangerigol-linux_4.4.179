@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 import os
 from optparse import OptionParser
@@ -99,3 +99,4 @@ for d in vmbus_dev_list:
 		print ('VMBUS ID ' + format2) % \
 			(d.vmbus_id, d.class_id, d.dev_desc, \
 			d.device_id, d.sysfs_path, d.chn_vp_mapping)
+

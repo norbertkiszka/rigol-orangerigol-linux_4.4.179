@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Usage: unwcheck.py FILE
 #
@@ -62,3 +62,4 @@ else:
         err="error"
     print "%u %s detected in %u functions." % (num_errors, err, num_funcs)
     sys.exit(1)
+

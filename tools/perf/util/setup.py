@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 from distutils.core import setup, Extension
 from os import getenv
@@ -50,3 +50,4 @@ setup(name='perf',
       url='http://perf.wiki.kernel.org',
       ext_modules=[perf],
       cmdclass={'build_ext': build_ext, 'install_lib': install_lib})
+

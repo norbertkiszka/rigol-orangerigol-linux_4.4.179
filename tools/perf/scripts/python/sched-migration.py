@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Cpu task migration overview toy
 #
@@ -458,3 +458,4 @@ def sched__sched_kthread_stop(event_name, context, common_cpu,
 
 def trace_unhandled(event_name, context, event_fields_dict):
 	pass
+
